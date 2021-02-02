@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))</script>
+    <script src="https://cdn3.devexpress.com/jslib/20.2.3/js/dx.all.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.2.3/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.2.3/css/dx.light.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Интерполирование полиномом Лагранжа</title>
+</head>
+<body>
+
+    <h1>Введите координаты через запятую</h1>
+
+    <input type="text" id="coordinates" size="150"/>
+    <button onclick="getResponse()">Получить полином Лагранжа</button>
+
+    <p id="lagrangePolynomial"></p>
+
+    <div id="chart"></div>
+
+    <h2 id="errorTableHeader"></h2>
+    <table id="errorTable" align="center"></table>
+
+</body>
+</html>

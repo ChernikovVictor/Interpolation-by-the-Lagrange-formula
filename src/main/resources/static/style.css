@@ -1,0 +1,38 @@
+table {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 18px;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 18px;
+    width: 300px;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+h5 {
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 72px;
+    text-align: center;
+}
+
+h2 {
+    color: #b48608;
+    font-family: 'Droid serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 44px;
+    margin: 0 0 12px;
+    text-align: center;
+}
