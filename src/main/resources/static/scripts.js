@@ -2,9 +2,9 @@ function getResponse() {
     var coordinates = document.getElementById("coordinates").value;
     var arr = coordinates.split(", ");
     if (arr.length < 4) {
-        alert("Введите больше координат (минимум 4)");
+        alert("Enter more coordinates (at least 4)");
     } else if (arr.length > 10) {
-        alert("Введите меньше координат (максимум 10)");
+        alert("Too many coordinates (not more than 10)");
     } else {
         getLagrangePolynomial(coordinates);
         getCharts(coordinates);
@@ -17,7 +17,7 @@ function getLagrangePolynomial(coordinates) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("lagrangePolynomial").innerHTML =
-                "Полином Лагранжа: " + this.responseText;
+                "Lagrange Polynomial: " + this.responseText;
         }
     };
     xhttp.open("POST", "http://localhost:8080/lagrange/polynomial", true);
@@ -38,7 +38,7 @@ function getCharts(coordinates) {
 }
 
 function drawChart(datasource) {
-    const NOT_INTERPOLATION_NODE = 0.1234; // код неинтерполяционного узла (см. ChartElement)
+    const NOT_INTERPOLATION_NODE = 0.1234; // check (ChartElement)
     var chart = $("#chart").dxChart({
         palette: "red",
         dataSource: datasource,
@@ -55,12 +55,12 @@ function drawChart(datasource) {
             bottom: 20
         },
         customizePoint: function(pointInfo) {
-            return pointInfo.value === NOT_INTERPOLATION_NODE ? {visible: false} : {visible: true} // Спец. условие, чтобы вывести узлы интерполяции
+            return pointInfo.value === NOT_INTERPOLATION_NODE ? {visible: false} : {visible: true} // Special condition for interpolation nodes
         },
         series: [
             { valueField: "f", name: "f(x)" },
             { valueField: "polynomialOfX", name: "Q(x)" },
-            { valueField: "interpolationNode", name: "узлы интерполяции", type: "scatter"}
+            { valueField: "interpolationNode", name: "Interpolation nodes", type: "scatter"}
         ],
         tooltip:{
             enabled: true
@@ -78,7 +78,7 @@ function drawChart(datasource) {
             allowDecimals: false,
             axisDivisionFactor: 60
         },
-        title: "Графики функции f(x) и полинома Лагранжа Q(x)"
+        title: "Function f(x) and Lagrange polynomial Q(x) graphics"
     }).dxChart("instance");
 }
 
@@ -88,7 +88,7 @@ function getErrorTable(coordinates) {
         if (this.readyState == 4 && this.status == 200) {
             var points = [];
             points = JSON.parse(this.responseText);
-            document.getElementById("errorTableHeader").innerText = "Погрешности в точках между узлами интерполяции";
+            document.getElementById("errorTableHeader").innerText = "Errors in the points between the interpolation nodes";
             drawTable(points);
         }
     };
